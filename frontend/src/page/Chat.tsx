@@ -278,26 +278,26 @@ export const Chat = () => {
   }
 
   return (
-    <main className="min-h-screen bg-black px-4 py-8 text-white selection:bg-white selection:text-black">
+    <main className="min-h-screen bg-black px-4 py-8 text-white font-mono selection:bg-white selection:text-black">
       <ToastStack toasts={toasts} />
 
       <section className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-2xl items-center animate-in fade-in duration-700">
-        <div className="flex h-[calc(100vh-4rem)] max-h-[760px] min-h-[560px] w-full flex-col rounded-xl border-2 border-stone-800 bg-zinc-950/50 backdrop-blur-sm px-4 py-5 sm:px-6 shadow-2xl font-sans">
+        <div className="flex h-[calc(100vh-4rem)] max-h-[760px] min-h-[560px] w-full flex-col rounded-xl border-2 border-stone-800 bg-zinc-950/50 backdrop-blur-sm px-4 py-5 sm:px-6 shadow-2xl">
           <Static />
 
           <div className="mt-4 grid gap-3 border-y border-stone-800 py-3 text-xs text-slate-300 sm:grid-cols-[1fr_auto] sm:items-center">
-            <div className="min-w-0 flex items-center gap-2 font-mono uppercase tracking-tighter">
-              <span className="opacity-60 text-[10px]">Room</span>
-              <span className="font-bold tracking-widest text-white bg-stone-800 px-2 py-0.5 rounded text-[11px]">
+            <div className="min-w-0 flex items-center gap-2">
+              <span className="opacity-60">Room</span>
+              <span className="font-bold tracking-widest text-white bg-stone-800 px-2 py-0.5 rounded">
                 {normalizedRoomId}
               </span>
-              <span className="ml-1 text-slate-500 flex items-center gap-1.5 text-[10px]">
+              <span className="ml-1 text-slate-500 flex items-center gap-1.5">
                 <span className="h-1 w-1 rounded-full bg-slate-600" />
                 {roomCount} online
               </span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 font-mono">
+            <div className="flex flex-wrap items-center gap-2">
               <div className="flex items-center gap-2 bg-stone-900/50 px-2 py-1 rounded border border-stone-800/50">
                 <span
                   className={`h-2 w-2 rounded-full shadow-[0_0_8px] ${
@@ -322,7 +322,7 @@ export const Chat = () => {
             className="my-4 min-h-0 flex-1 overflow-y-auto rounded-md border-2 border-stone-800/50 bg-black/40 p-4 custom-scrollbar"
           >
             {messages.length === 0 ? (
-              <div className="flex h-full flex-col items-center justify-center text-center space-y-2 opacity-40 font-mono">
+              <div className="flex h-full flex-col items-center justify-center text-center space-y-2 opacity-40">
                 <ChatIcon />
                 <p className="text-xs tracking-widest">ENCRYPTED CHANNEL OPEN</p>
                 <p className="text-[10px] text-slate-500 uppercase">Wait for someone to join</p>
@@ -337,7 +337,7 @@ export const Chat = () => {
                     }`}
                   >
                     <div
-                      className={`max-w-[85%] break-words px-4 py-2.5 text-[15px] leading-relaxed shadow-sm ${
+                      className={`max-w-[85%] break-words px-4 py-2.5 text-sm leading-relaxed shadow-sm ${
                         msg.sender === "me"
                           ? "rounded-t-2xl rounded-bl-2xl bg-white text-black font-medium"
                           : "rounded-t-2xl rounded-br-2xl bg-stone-800 text-stone-100 border border-stone-700/50"
@@ -345,7 +345,7 @@ export const Chat = () => {
                     >
                       {msg.text}
                     </div>
-                    <span className="mt-1 text-[9px] uppercase tracking-tighter text-stone-500 px-1 font-mono">
+                    <span className="mt-1 text-[9px] uppercase tracking-tighter text-stone-500 px-1">
                       {msg.time}
                     </span>
                   </div>
@@ -364,11 +364,11 @@ export const Chat = () => {
             )}
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-[1fr_auto] items-end font-sans">
+          <div className="grid gap-3 sm:grid-cols-[1fr_auto] items-end">
             <div className="relative group">
               <InputBox
                 placeholder={isConnected ? "Type a message..." : "Waiting for connection..."}
-                size="w-full transition-all duration-300 group-hover:border-stone-600 text-[15px]"
+                size="w-full transition-all duration-300 group-hover:border-stone-600"
                 value={input}
                 disabled={!isConnected}
                 onChange={(event) => handleInputChange(event.target.value)}
@@ -378,7 +378,7 @@ export const Chat = () => {
                   }
                 }}
               />
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1 opacity-20 group-hover:opacity-40 transition-opacity font-mono">
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1 opacity-20 group-hover:opacity-40 transition-opacity">
                 <span className="text-[10px] border border-stone-700 px-1 rounded">⌘</span>
                 <span className="text-[10px] border border-stone-700 px-1 rounded">↵</span>
               </div>
