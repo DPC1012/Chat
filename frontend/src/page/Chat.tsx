@@ -30,7 +30,7 @@ type ServerMessage =
   | { type: "typing"; payload: { isTyping: boolean } }
   | { type: "error"; payload: { message: string } };
 
-const socketUrl = import.meta.env.VITE_WS_URL ?? "ws://localhost:5050";
+const socketUrl = import.meta.env.VITE_BACKEND_URL ?? "ws://localhost:5050";
 
 export const Chat = () => {
   const [messages, setMessages] = useState<Message[]>([]);
