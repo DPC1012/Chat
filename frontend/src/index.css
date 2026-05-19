@@ -1,19 +1,80 @@
 @import "tailwindcss";
 
-/* Dark scrollbar */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "Geist Mono", "Fira Code", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased font-sans;
+  }
+}
+
+@layer utilities {
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #292524; /* stone-800 */
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #44403c; /* stone-700 */
+  }
+
+  /* Custom Animations */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes zoom-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes slide-in-bottom {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+
+  .animate-in {
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .fade-in { animation-name: fade-in; }
+  .zoom-in-95 { animation-name: zoom-in; }
+  .slide-in-from-bottom-2 { animation-name: slide-in-bottom; }
+  .slide-in-from-left-2 { animation-name: slide-in-left; }
+  .slide-in-from-right-full { animation-name: slide-in-right; }
+  .shake-1 { animation-name: shake; animation-duration: 300ms; }
+}
+
+/* Global scrollbar fallback */
 ::-webkit-scrollbar {
   width: 4px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0a0a0a; /* Dark background */
+  background: #000;
 }
-
 ::-webkit-scrollbar-thumb {
-  background-color: #444; /* Dark gray thumb */
+  background: #292524;
   border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #666; /* Slightly lighter on hover */
 }
