@@ -215,15 +215,6 @@ export const Chat = () => {
     }, 2800);
   }
 
-  async function copyRoomLink() {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      showToast("Room link copied.", "success");
-    } catch {
-      showToast("Could not copy room link.", "error");
-    }
-  }
-
   function handleReconnect() {
     socketRef.current?.close();
     setConnectionAttempt((attempt) => attempt + 1);
@@ -306,7 +297,6 @@ export const Chat = () => {
                 />
                 <span className="capitalize text-[10px] tracking-wider">{status}</span>
               </div>
-              <Button title="Copy Link" variants="md" onClick={copyRoomLink} />
               {status === "disconnected" && (
                 <Button
                   title="Reconnect"
